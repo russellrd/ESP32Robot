@@ -1,5 +1,5 @@
 // Libraries
-#include <ESP32_Servo.h>
+#include <ESP32_Servo.h> // Install ESP32Servo library
 
 // I/O
 #define TOUCH 15
@@ -7,6 +7,8 @@
 #define ECHO 5
 #define TRIG 2
 #define THRESH 10
+#define LSERVO 32
+#define RSERVO 33
 
 int pos = 0;
 long duration;
@@ -21,8 +23,8 @@ void setup() {
   delay(1000);
 
   // Setup I/O
-  left.attach(32);
-  right.attach(33);
+  left.attach(LSERVO);
+  right.attach(RSERVO);
   pinMode(LED, OUTPUT);
   pinMode(TRIG, OUTPUT);
   pinMode(ECHO, INPUT);
