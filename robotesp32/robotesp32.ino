@@ -60,7 +60,7 @@ void loop() {
       left.write(65);
       right.write(110);
       delay(500);
-      /// Stop
+      // Stop
       left.write(90);
       right.write(90);
       delay(500);
