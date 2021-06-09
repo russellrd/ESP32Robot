@@ -10,7 +10,6 @@
 #define LSERVO 32
 #define RSERVO 33
 
-int pos = 0;
 long duration;
 double cm, inches;
 boolean start = false;

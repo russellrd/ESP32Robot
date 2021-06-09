@@ -27,24 +27,53 @@ AsyncWebServer server(80);
 
 // Code for website
 const char index_html[] PROGMEM = R"rawliteral(
-<!DOCTYPE HTML><html>
+<!DOCTYPE HTML>
+<html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <title>Robot Control Panel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <title>Robot Control Panel</title>
 </head>
 <body>
-<div class="row">
-<a href="/forward"><button class="waves-effect waves-light btn">Forward</button></a>
-<a href="/backward"><button class="waves-effect waves-light btn">Backward</button></a>
-<a href="/left"><button class="waves-effect waves-light btn">Left</button></a>
-<a href="/right"><button class="waves-effect waves-light btn">Right</button></a><br />
+<h1><b>R</b>obot <b>C</b>ontrol <b>P</b>anel</h1>
+<div class="grid-container">
+    <div class="empty-item"></div>
+    <a href="/forward"><div class="grid-item">^</div></a>
+    <div class="empty-item"></div>
+    <a href="/left"><div class="grid-item"><</div></a>
+    <a href="/backward"><div class="grid-item">v</div></a>
+    <a href="/right"><div class="grid-item">></div></a>
 </div>
 </body>
+<style>
+h1 {
+    background-color: black;
+    color: white;
+    text-align: center;
+    margin: 0;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+.grid-item {
+    background-color: lightseagreen;
+    color: white;
+    border: 0px;
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+.empty-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+</style>
 </html>
 )rawliteral";
-
 
 // Drive for 0.8 seconds with a left and right speed
 void drive(int leftSpeed, int rightSpeed) {
